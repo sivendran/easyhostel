@@ -2,12 +2,16 @@ package com.example.admin.easyhostel;
 
 
 import android.content.SharedPreferences;
+import android.database.DataSetObserver;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.NotificationCompat;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -41,14 +45,12 @@ public class Notifications extends Fragment {
     DatabaseReference ref;
     private SharedPreferences preferences;
     private List<WriteNotification> notifications;
-
-
-
+    private RecyclerView recyclerView;
+    private NotificationAdapter mAdapter;
 
     public Notifications() {
         // Required empty public constructor
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -57,19 +59,15 @@ public class Notifications extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_notifications, container, false);
 
-
         notifications = new ArrayList<>();
-
-
-
-        txtGetNOTICE = (TextView) view.findViewById(R.id.txtGetNotification);
+        recyclerView=(RecyclerView)view.findViewById(R.id.recyclerview);
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
+        recyclerView.setLayoutManager(mLayoutManager);
 
         preferences=getActivity().getSharedPreferences(User_details,MODE_PRIVATE);
         String gender = preferences.getString(Gender,"");
         String faculty = preferences.getString(Faculty,"");
         String year = preferences.getString(Year,"");
-
-
 
         mAuth= FirebaseAuth.getInstance();
         database= FirebaseDatabase.getInstance();
@@ -83,14 +81,14 @@ public class Notifications extends Fragment {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 //get details from WriteNotification Class
-
                 for (DataSnapshot data:dataSnapshot.getChildren()){
                     WriteNotification writeNotification= data.getValue(WriteNotification.class);
                     notifications.add(writeNotification);
                 }
 
                 notifications.size();
-
+                mAdapter = new NotificationAdapter(notifications);
+                recyclerView.setAdapter(mAdapter);
             }
 
             @Override
@@ -98,8 +96,6 @@ public class Notifications extends Fragment {
 
             }
         });
-
-
 
         return view;
 

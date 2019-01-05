@@ -19,12 +19,25 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import static com.example.admin.easyhostel.Constants.Faculty;
+import static com.example.admin.easyhostel.Constants.Gender;
+import static com.example.admin.easyhostel.Constants.Name;
+import static com.example.admin.easyhostel.Constants.User_details;
+import static com.example.admin.easyhostel.Constants.Year;
 
 public class login extends AppCompatActivity implements View.OnClickListener {
 EditText etdEmail,etdPassword;
 ProgressBar progressbar;
     private FirebaseAuth mAuth;
     private SharedPreferences preferences;
+    FirebaseDatabase firebaseDatabase;
+    DatabaseReference databaseReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,13 +96,7 @@ ProgressBar progressbar;
                     progressbar.setVisibility(View.GONE);
                     if (task.isSuccessful()) {
                         // Sign in success, update UI with the signed-in user's information
-                        FirebaseUser user = mAuth.getCurrentUser();
-
-
-                        Intent intent = new Intent(login.this, HomeActivity.class);
-                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                        startActivity(intent);
-                        finish();
+                        saveUserData();
                     } else {
                         // If sign in fails, display a message to the user.
                         Toast.makeText(login.this, "Login failed.",
@@ -116,6 +123,44 @@ ProgressBar progressbar;
                 break;
 
         }
+    }
+
+
+    private void saveUserData(){
+        firebaseDatabase= FirebaseDatabase.getInstance();
+
+        String uid=FirebaseAuth.getInstance().getCurrentUser().getUid();
+        //DatabaseReference databaseReference=firebaseDatabase.getReference(uid);
+
+        databaseReference = FirebaseDatabase.getInstance().getReference().child("STUDENT_DETAILS").child(uid);
+
+
+        ValueEventListener valueEventListener = databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                studentDetails Student = dataSnapshot.getValue(studentDetails.class);
+
+                //save Details to sharedPreferences
+                SharedPreferences.Editor editor= getSharedPreferences(User_details,MODE_PRIVATE).edit();
+                editor.putString(Name,Student.getName());
+                editor.putString(Gender,Student.getGender());
+                editor.putString(Year,Student.getYear());
+                editor.putString(Faculty,Student.getFac1());
+                editor.apply();
+
+                Intent intent = new Intent(login.this, HomeActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+                finish();
+            }
+
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
     }
 
 

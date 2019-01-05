@@ -133,13 +133,13 @@ public class StudentProfile extends Fragment {
                 txFaculty.setText("Faculty : " + Student.getFac1());
                 txYear.setText("Year : " + Student.getYear());
 
-                //save Details to sharedPreferences
+                /*//save Details to sharedPreferences
                 SharedPreferences.Editor editor= getActivity().getSharedPreferences(User_details,MODE_PRIVATE).edit();
                 editor.putString(Name,Student.getName());
                 editor.putString(Gender,Student.getGender());
                 editor.putString(Year,Student.getYear());
                 editor.putString(Faculty,Student.getFac1());
-                editor.apply();
+                editor.apply();*/
 
 
 
