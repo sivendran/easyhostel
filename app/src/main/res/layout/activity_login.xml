@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="18dp"
+    android:paddingRight="18dp"
+    android:background="@drawable/back5"
+    tools:context="com.example.admin.easyhostel.MainActivity">
+
+
+    <ImageView
+        android:layout_width="240dp"
+        android:layout_height="120dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="20dp"
+        android:padding="8dp"
+
+        android:src="@drawable/ic_person_black_24dp"
+
+        />
+
+    <EditText
+        android:id="@+id/etd8"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/hint6"
+        android:inputType="textEmailAddress"
+        android:drawablePadding="12dp"
+        android:padding="8dp"
+        android:background="@drawable/border"
+        android:textSize="20dp"
+        android:drawableLeft="@drawable/ic_mail_black_24dp"
+        android:textColorHint="#fff" />
+    <EditText
+        android:id="@+id/etd9"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="20"
+        android:drawablePadding="12dp"
+        android:hint="@string/hint7"
+        android:textColorHint="#fff"
+        android:inputType="textPassword"
+        android:layout_marginTop="8dp"
+        android:padding="8dp"
+        android:textSize="20dp"
+        android:background="@drawable/border"
+        android:drawableLeft="@drawable/ic_lock_outline_black_24dp"
+
+
+        />
+
+
+    <Button
+        android:id="@+id/btn1"
+        android:layout_width="match_parent"
+        android:layout_height="47dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/change"
+        android:padding="5dp"
+        android:text="@string/sign"
+
+        android:textColor="@color/bg3"
+        android:textSize="18dp" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ProgressBar
+            android:id="@+id/progressbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_gravity="center_horizontal"
+            android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/img2"
+            android:layout_width="45dp"
+            android:layout_height="44dp"
+
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/ic_home_black_24dp" />
+
+    </RelativeLayout>
+
+
+
+</LinearLayout>

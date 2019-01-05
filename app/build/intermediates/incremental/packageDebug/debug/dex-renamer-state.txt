@@ -1,0 +1,4 @@
+#Sat Jan 05 13:51:55 IST 2019
+base.0=E\:\\Android Projects\\New folder (5)\\Easyhostel 2\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\0
+path.0=classes.dex
+renamed.0=classes.dex

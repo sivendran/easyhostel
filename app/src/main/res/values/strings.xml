@@ -1,0 +1,47 @@
+<resources>
+
+    <string name="app_name">Easy Hostel </string>
+    <string name="hint1">Name</string>
+    <string name="hint2">Register Number</string>
+    <string name="hint3">Gender</string>
+    <string name="hint4">Faculty</string>
+    <string name="hint5">Year</string>
+    <string name="hint6">Email</string>
+    <string name="hint7">Password</string>
+    <string name="hint8">Conform Password</string>
+    <string name="sign">Login</string>
+    <string name="signup">Dont have account?  Signup</string>
+
+    <array name="faculty">
+
+        <item>Applied Sciences</item>
+        <item>Management Studies</item>
+        <item>Geomatics</item>
+        <item>Social Sciences</item>
+        <item>Ageicultural Science</item>
+    </array>
+
+    <array name="Gender">
+        <item>Male</item>
+        <item>Female</item>
+
+    </array>
+
+    <array name="Year">
+        <item>1st Year</item>
+        <item>2nd Year</item>
+        <item>3rd Year</item>
+        <item>4th Year</item>
+
+    </array>
+
+    <string name="title_activity_tapp_view">TappVIew</string>
+    <string name="action_settings">Settings</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="Admin_email">Hostel01@gmail.com</string>
+    <string name="Admin_Password">Hostel123</string>
+</resources>

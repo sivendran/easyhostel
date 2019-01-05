@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/imgfac"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/spnrfac1"/>
+
+    <TextView
+        android:id="@+id/txt_fac_spnr"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignBottom="@+id/imgfac"
+        android:layout_marginStart="11dp"
+        android:layout_toEndOf="@+id/imgfac"
+        android:gravity="center_vertical"
+        android:text="Faculty....."
+        android:textSize="20dp"
+        android:textColor="#3e2723"/>
+</RelativeLayout>
